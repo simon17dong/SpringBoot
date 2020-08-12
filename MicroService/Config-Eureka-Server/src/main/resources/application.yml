@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-eureka-server
+
+eureka:
+  peer1:
+    hostname: server1
+    port: 8881
+  peer2:
+    hostname: server2
+    port: 8882
+  peer3:
+    hostname: server3
+    port: 8883

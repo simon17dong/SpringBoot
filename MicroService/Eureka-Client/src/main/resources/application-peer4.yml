@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: eureka-client-02
+
+server:
+  port: 8084
+
+eureka:
+  instance:
+    hostname: ${eureka.peer1.hostname}
+
+  client:
+    service-url:
+      defaultZone: http://${eureka.peer1.hostname}:${eureka.peer1.port}/eureka/,http://${eureka.peer2.hostname}:${eureka.peer2.port}/eureka/,http://${eureka.peer3.hostname}:${eureka.peer3.port}/eureka/

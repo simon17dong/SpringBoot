@@ -1,0 +1,24 @@
+server:
+  port: 8071
+
+eureka:
+  instance:
+    hostname: ${eureka.peer1.hostname}
+
+  client:
+    service-url:
+      defaultZone: http://${eureka.peer1.hostname}:${eureka.peer1.port}/eureka/ #,http://${eureka.peer2.hostname}:${eureka.peer2.port}/eureka/,http://${eureka.peer3.hostname}:${eureka.peer3.port}/eureka/
+
+zuul:
+  routes:
+    api-a:
+      path: /api/ribbon/**
+      serviceId: service-ribbon
+    api-b:
+      path: /api/feign/**
+      serviceId: service-feign
+
+#以/api-a/开头的请求都转发给service-ribbon服务
+#以/api-b/开头的请求都转发给service-feign服务
+
+# https://www.cnblogs.com/maoxy/p/12167791.html #

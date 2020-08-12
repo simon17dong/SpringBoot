@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.peer1.hostname}:${eureka.peer1.port}/eureka/,http://${eureka.peer2.hostname}:${eureka.peer2.port}/eureka/,http://${eureka.peer3.hostname}:${eureka.peer3.port}/eureka/
+
+spring:
+  application:
+    # \u670D\u52A1\u5728\u4E2D\u5FC3\u7684\u6CE8\u518CID
+    name: mss
+
+  datasource:
+    type:
+    driver-class-name:
+    url:
+    username:
+    password:
+

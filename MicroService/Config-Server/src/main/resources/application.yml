@@ -1,0 +1,24 @@
+eureka:
+  peer1:
+    hostname: server1
+    port: 8881
+  peer2:
+    hostname: server2
+    port: 8882
+  peer3:
+    hostname: server3
+    port: 8883
+
+spring:
+  # 进行配置与存储在Git(码云)上的配置文件进行交互
+  application:
+    name: config
+
+  cloud:
+    config:
+      server:
+        git:
+          # 配置仓库的地址
+          uri:
+          username:
+          password:

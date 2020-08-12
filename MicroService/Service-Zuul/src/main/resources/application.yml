@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: service-zuul
+
+eureka:
+  peer1:
+    hostname: server1
+    port: 8761
+  peer2:
+    hostname: server2
+    port: 8762
+  peer3:
+    hostname: server3
+    port: 8763
+
+server:
+  undertow:
+    direct-buffers: true
+    io-threads: 5
+    worker-threads: 100

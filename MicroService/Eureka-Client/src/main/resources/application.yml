@@ -1,0 +1,16 @@
+spring:
+  application:
+    # 服务之间是根据此名称进行相互调用，所以此时表示8081~8083对外提供一个服务，服务名为eureka-client=====>等同于一个小的集群 #
+    # 此处名称最好写项目名称，便于识别服务提供者
+    name: eureka-client
+
+eureka:
+  peer1:
+    hostname: server1
+    port: 8761
+  peer2:
+    hostname: server2
+    port: 8762
+  peer3:
+    hostname: server3
+    port: 8763

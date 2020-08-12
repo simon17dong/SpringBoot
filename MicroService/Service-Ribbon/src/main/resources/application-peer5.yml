@@ -1,0 +1,10 @@
+server:
+  port: 9095
+
+eureka:
+  instance:
+    hostname: ${eureka.peer2.hostname}
+
+  client:
+    service-url:
+      defaultZone: http://${eureka.peer1.hostname}:${eureka.peer1.port}/eureka/,http://${eureka.peer2.hostname}:${eureka.peer2.port}/eureka/,http://${eureka.peer3.hostname}:${eureka.peer3.port}/eureka/

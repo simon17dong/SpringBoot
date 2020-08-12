@@ -1,0 +1,18 @@
+server:
+  #指定该Eureka实例的端口
+  port: 8761
+
+eureka:
+  instance:
+    #设置当前实例的主机名称
+    hostname: ${eureka.peer1.hostname}
+
+  client:
+    #通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server
+    #禁止注册自身
+#    register-with-eureka: false
+    #因为该服务没有注册到其他注册中心，所以关闭从注册中心拉取服务列表
+#    fetch-registry: false
+    #服务注册中心地址
+    service-url:
+      defaultZone: http://${eureka.peer1.hostname}:${eureka.peer1.port}/eureka/,http://${eureka.peer2.hostname}:${eureka.peer2.port}/eureka/,http://${eureka.peer3.hostname}:${eureka.peer3.port}/eureka/

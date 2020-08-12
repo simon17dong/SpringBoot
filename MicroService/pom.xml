@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 申明此项目为springboot项目 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.future</groupId>
+    <artifactId>microservice</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>microservice</name>
+    <description>Demo project for Spring Boot</description>
+    <!--    # https://www.cnblogs.com/maoxy/p/12167791.html #-->
+
+    <modules>
+        <!--        # 参数文件配置中心 #-->
+        <module>Config-Eureka-Server</module>
+        <module>Config-Server</module>
+        <module>Config-Client</module>
+
+        <!--        # 服务注册发现中心 #-->
+        <module>Eureka-Server</module>
+        <module>Eureka-Client</module>
+
+        <!--        # 负载均衡 #-->
+        <module>Service-Ribbon</module>
+        <module>Service-Feign</module>
+
+        <!--        # 请求路由转发 #-->
+        <module>Service-Zuul</module>
+
+        <!--        # 其它 #-->
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            <id>dev</id>-->
+    <!--            <activation>-->
+    <!--                <activeByDefault>true</activeByDefault>-->
+    <!--            </activation>-->
+    <!--            <build>-->
+    <!--                <filters>-->
+    <!--                    <filter>../${project.parent.artifactId}/vars/vars.dev.properties</filter>-->
+    <!--                </filters>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--        <profile>-->
+    <!--            <id>sit</id>-->
+    <!--            <build>-->
+    <!--                <filters>-->
+    <!--                    <filter>../${project.parent.artifactId}/vars/vars.sit.properties</filter>-->
+    <!--                </filters>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--        <profile>-->
+    <!--            <id>pre</id>-->
+    <!--            <build>-->
+    <!--                <filters>-->
+    <!--                    <filter>../${project.parent.artifactId}/vars/vars.pre.properties</filter>-->
+    <!--                </filters>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--        <profile>-->
+    <!--            <id>prd</id>-->
+    <!--            <build>-->
+    <!--                <filters>-->
+    <!--                    <filter>../${project.parent.artifactId}/vars/vars.prd.properties</filter>-->
+    <!--                </filters>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>com.spotify</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>1.2.2</version>-->
+<!--                <configuration>-->
+<!--&lt;!&ndash;                    生成的镜像名&ndash;&gt;-->
+<!--                    <imageName>${project.groupId}-${project.artifactId}</imageName>-->
+<!--                    <imageTags>lastest</imageTags>-->
+<!--&lt;!&ndash;                    Dockerfile文件所在的文件夹&ndash;&gt;-->
+<!--                    <dockerDirectory>src/main/docker</dockerDirectory>-->
+<!--                    <resources>-->
+<!--                        <resource>-->
+<!--&lt;!&ndash;                            jar包所在的路径,directory/targetPath,此处配置的即对应这target目录下&ndash;&gt;-->
+<!--                            <targetPath>/</targetPath>-->
+<!--&lt;!&ndash;                            打包后的目录&ndash;&gt;-->
+<!--                            <directory>${project.build.directory}</directory>-->
+<!--&lt;!&ndash;                            需要包含的jar文件,很明显这里对应的是Dockerfile中添加的文件名,project.build.finalName=project.artifactId-version&ndash;&gt;-->
+<!--                            <include>${project.build.finalName}</include>-->
+<!--                        </resource>-->
+<!--                    </resources>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
