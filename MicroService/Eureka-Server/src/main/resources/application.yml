@@ -2,7 +2,7 @@
 # https://www.jianshu.com/u/8fa6bf5f8bd9 #
 spring:
   profiles:
-    active: peer3
+    active: peer1
 
   application:
     name: eureka-server
@@ -10,15 +10,15 @@ spring:
 eureka:
   peer1:
 #    hostname: 47.111.142.100
-    hostname: 192.168.140.130
+    hostname: 127.0.0.1
     port: 8761
   peer2:
 #    hostname: 47.111.142.100
-    hostname: 192.168.140.130
+    hostname: 127.0.0.1
     port: 8762
   peer3:
 #    hostname: 47.111.142.100
-    hostname: 192.168.140.130
+    hostname: 127.0.0.1
     port: 8763
 
   server:
